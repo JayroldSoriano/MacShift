@@ -1,0 +1,72 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "macshift"
+version = "1.0.0"
+description = "Privacy-first MAC address rotator with randomized intervals, live UI, and a doctor mode (Linux + macOS)."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+    { name = "Jayrold Christian Soriano" }
+]
+keywords = [
+    "mac-address",
+    "privacy",
+    "anti-tracking",
+    "security",
+    "pentest",
+    "wifi",
+    "networking"
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: System Administrators",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: MacOS :: MacOS X",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Security",
+    "Topic :: System :: Networking",
+]
+dependencies = [
+    "rich>=13.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/JayroldSoriano/MacShift"
+Repository = "https://github.com/JayroldSoriano/MacShift"
+Issues = "https://github.com/JayroldSoriano/MacShift/issues"
+Changelog = "https://github.com/JayroldSoriano/MacShift/blob/main/CHANGELOG.md"
+
+[project.scripts]
+macshift = "macshift.cli:main"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7",
+    "ruff>=0.4",
+]
+
+[tool.setuptools.packages.find]
+include = ["macshift*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
