@@ -44,6 +44,35 @@ You can also run the package directly without installing the entry point:
 python -m macshift --help
 ```
 
+## Run script (zero-setup)
+
+If you just want to get going without installing anything globally, use the
+included `run.sh` bootstrap script:
+
+```bash
+chmod +x run.sh   # first time only
+./run.sh           # prints help
+```
+
+The script will automatically:
+
+1. Check that Python 3 is available.
+2. Create a virtual environment in `.venv/` (if one doesn't already exist).
+3. Install macshift and its dependencies into the venv.
+4. Re-execute with `sudo` when a privileged command (`run`, `restore`) is used.
+
+```bash
+./run.sh doctor                          # probe your hardware
+./run.sh list                            # show interfaces & MACs
+./run.sh run                             # rotate every hour (prompts for sudo)
+./run.sh run --once                      # single rotation then exit
+./run.sh run --random-interval 20m 90m   # privacy-recommended mode
+./run.sh restore                         # restore original MAC
+```
+
+> **Tip:** You can pass *any* macshift flags directly to `run.sh` — they are
+> forwarded as-is.
+
 ## Quickstart
 
 Rotate the active interface's MAC every hour (default):
